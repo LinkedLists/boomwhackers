@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-200233490-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-200233490-2');
+    </script>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Keytar Hero" />
+    <meta property="og:image" content="./public/assets/preview.gif" />
+    <meta
+      property="og:description"
+      content="Keytar Hero is a Javascript and HTML Canvas music and rhythm game that is inspired by Guitar Hero. 
+      Players play through a song by timing the correct key presses for each note at the right time."
+    />
+    <meta
+      property="og:url"
+      content="https://linkedlists.github.io/Keytar-Hero/"
+    />
+    <title>Keytar Hero</title>
+    <script type="text/javascript" src="./public/bundle.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/uhh.css">
+    <link rel="shortcut icon" href="#">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <link rel='icon' href='./public/assets/favicon.png'>
+  </head>
+  <body>
+
+    <audio id='audio' src="https://fsp-seed.s3-us-west-1.amazonaws.com/yt1s.com+-+Marshmello+Halsey++Be+Kind+Halsey+Lyric+Video.mp3"></audio>
+
+    <!-- main menu -->
+    <div class='homepage-container'>
+      <div class='main-menu-container'>
+        <div class='main-menu-l-container Lopen'>
+          <h2 class='main-menu-l-header'>Keytar Hero</h2>
+        </div>
+        <div class='main-menu-r-container Ropen'>
+          <div class='main-menu-r-wrapper'>
+
+            <button id='start-btn'>songs</button>
+            <button class='open-modal' id='start-btn'>instructions</button>
+            <div class="links-container" id='links-container-homepage'>
+              <a href="https://angel.co/u/kenny-zeng"><img src='./public/assets/angellist.png' class="link-imgs" /></a>
+              <a href="https://github.com/LinkedLists/js"><img src='./public/assets/github.png' class="link-imgs" /></a>
+              <a href="https://www.linkedin.com/in/k-z-96a742208/"><img src='./public/assets/linkedin.png' class="link-imgs" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- song selection -->
+      <div class='song-selection-container-closed hidden'>
+        <div class="links-container-nav navOut">
+          <a href="https://angel.co/u/kenny-zeng"><img src='./public/assets/angellist2.png' class="link-imgs" /></a>
+          <a href="https://github.com/LinkedLists/js"><img src='./public/assets/github2.png' class="link-imgs" /></a>
+          <a href="https://www.linkedin.com/in/k-z-96a742208/"><img src='./public/assets/linkedin2.png' class="link-imgs" /></a>
+        </div>
+        <div class='selection-circle circleClose'>
+          <div class='blackout'></div>
+          <ul class='selection-circle-ul'>
+            <li class='song-carousel-item' id='song1'><span class='title'>Halsey - Be Kind [<span style='color: #55f96b'>Easy</span> 2:53]</span></li>
+            <li class='song-carousel-item' id='song2'><span class='title'>Yoko Takahashi - A Cruel Angel's Thesis [<span style='color: #55e2f9'>Normal</span> 1:30]</span></li>
+            <li class='song-carousel-item' id='song3'><span class='title'>Yugo Kanno - Il vento d'oro [<span style='color: #55e2f9'>Normal</span> 1:39]</span></li>
+            <li class='song-carousel-item' id='song4'><span class='title'>Yugo Kanno - Il vento d'oro [<span style='color: #de0b46'>HARD</span> 1:39]</span></li>
+            <li class='song-carousel-item' id='song5'><span class='title'>Judas Priest - Breaking the Law (SOON)</span></li>
+            <li class='song-carousel-item' id='song6'><span class='title'>The Weekend - Save Your Tears (SOON)</span></li>
+          </ul>
+        </div>
+
+        <div class='preview-carousel-container carouselClosed'>
+          <div class='carousel-wheel-btn-container '>
+            <button class='carousel-wheel-btn' id='selection-next-btn'></button>
+            <button class='carousel-wheel-btn' id='selection-prev-btn'></button>
+          </div>
+
+          <div class='preview-btn-container'>
+            <button class='carousel-wheel-btn game-btns' id='selection-back-btn'>Back</button>
+
+            <div class='carousel-wheel-btn game-btns' id='select-menu-volume-btn'>
+              <i class="fas fa-volume-up" id='carousel-mute'></i>
+              <i class="fas fa-volume-off hidden" id='carousel-unmute' ></i>
+              <input id='select-menu-volume' type="range" min="0" max="100">
+            </div>
+
+            <button class='carousel-wheel-btn game-btns open-modal'>Instructions</button>
+          </div>
+
+          <div class='preview-carousel'>
+
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/be+kind+img.jpg" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://keytar-hero-seed.s3-us-west-1.amazonaws.com/neongen.jpg" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://keytar-hero-seed.s3-us-west-1.amazonaws.com/jojo.png" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://keytar-hero-seed.s3-us-west-1.amazonaws.com/jojo.png" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://keytar-hero-seed.s3-us-west-1.amazonaws.com/british+steel.jpg" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class='preview-img-container'>
+              <div class='preview-shadow'>
+                <img src="https://fsp-seed.s3-us-west-1.amazonaws.com/The_Weeknd_-_After_Hours.png" class="preview-img"/>
+                <div class='playbtn-container'>
+                  <div class='playbtn'>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal">
+      <div class="instructions-container">
+        <div class="instructions-content">
+          <div class="instructions-header">Instructions</div>
+          <div class="target-container"> 
+            <div class="target" id="target-1">1</div>
+            <div class="target" id="target-2">2</div>
+            <div class="target" id="target-3">3</div>
+            <div class="target" id="target-4">4</div>
+            <div class="target" id="target-5">5</div>
+          </div>
+          <div class="instructions">Time your button presses to the beat</div>
+          <div class="instructions">And...</div>
+          <img src="./public/assets/holding.png" class="holding-img" />
+          <div class="instructions">Remember to hold your press for these long notes</div>
+          <button id="modal-close-btn">Got it</button>
+        </div>
+      </div>
+      <div class="modal-screen"></div>
+    </div>
+
+    <!-- game -->
+    <div class="game-view hidden">
+      <div class="canvas-wrapper">
+        <canvas id="canvas" width="700" height="800"></canvas>
+      </div>
+      <div class='score-board'>
+        <div class="button-wrapper">
+          <button class="game-btns" id='back'>Back</button>
+          <button class="game-btns" id='restart'>Restart</button>
+          <button class="game-btns" id='pause'><i class="fas fa-pause"></i></button>
+          <button class="game-btns hidden" id='resume'><i class="fas fa-play"></i></button>
+          <div class="game-btns" id='game-volume-btn'>
+            <i class="fas fa-volume-up" id='mute'></i>
+            <i class="fas fa-volume-off hidden" id='unmute' ></i>
+            <input id='game-volume' type="range" min="0" max="100">
+          </div>
+
+        </div>
+        <div class='score-wrapper'>
+          <div class='score'>Score </div>
+          <div class='score' id='score'></div>
+        </div>
+      </div>
+  
+      <div class='streak-board'>
+        <div class='streak-container'>
+          <div class='streak-wrapper'>
+            <div class='streak'>Streak </div>
+            <div class='streak' id='streak'></div>
+            <div class='streak'>Max Streak</div>
+            <div class='streak' id='max-streak'></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-end-container endClosed">
+      <div class="game-end-wrapper endClosed">
+        <h2 class='game-end-score'>
+          
+        </h2>
+
+        <ul class='game-end-main-content'>
+          <li>
+            <h4>Score</h4>
+            <div id='score-value'></div>
+          </li>
+          <li>
+            <h4>Max Combo</h4>
+            <div id='combo-value'></div>
+          </li>
+          <li>
+            <h4>Hit %</h4>
+            <div id='percent-value'></div>
+          </li>
+          <li>
+            <h4>Hit</h4>
+            <div id='hit-value'></div>
+          </li>
+          <li>
+            <h4>Missed</h4>
+            <div id='missed-value'></div>
+          </li>
+        </ul>
+
+        <div class='game-end-btn-footer'>
+          <button id='replay-btn'>Replay</button>
+          <button id='back-btn'>Song Selection</button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,171 @@
+.homepage-container {
+  background-image: url("../assets/background2.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+}
+
+.main-menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#start-btn {
+  background: none;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  padding: 10px 0px;
+  margin-bottom: 10px;
+}
+
+.main-menu-l-container {
+  transform: perspective(400px) rotateY(25deg);
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-menu-l-header {
+  color: white;
+  font-family: 'Nosifer';
+  font-size: 55px;
+  display: flex;
+  align-items: center;
+
+  animation: idleL 5s linear infinite;
+}
+
+@keyframes idleL {
+  0%{transform: rotateY(-1deg) rotatez(1deg) scale(1);}
+  25%{transform: rotateY(-2deg) rotatez(0.2deg) scale(1.02);}
+  50%{transform: rotateY(3deg) rotatez(-0.5deg) scale(1);}
+  75%{transform: rotateY(6deg) rotatez(-1.2deg) scale(0.99);}
+  100%{transform: rotateY(-1deg) rotatez(1deg) scale(1);}
+}
+
+.main-menu-r-container {
+  transform: perspective(400px) rotateY(-25deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 500px;
+
+}
+
+.main-menu-r-wrapper {
+  
+  animation: idleR 5s linear infinite reverse;
+}
+
+@keyframes idleR {
+  0%{transform: rotateY(-1deg) rotatez(1deg) scale(1);}
+  35%{transform: rotateY(-2deg) rotatez(0.2deg) scale(1.02);}
+  55%{transform: rotateY(3deg) rotatez(-0.5deg) scale(1);}
+  82%{transform: rotateY(6deg) rotatez(-1.2deg) scale(0.99);}
+  100%{transform: rotateY(-1deg) rotatez(1deg) scale(1);}
+}
+
+.main-menu-r-container button {
+  color: white;
+  font-family: 'Nosifer';
+  font-size: 44px;
+}
+
+.main-menu-r-container button:hover {
+  color: yellow;
+  text-shadow: 1px 0px 15px #ffffffa8;
+}
+
+.Lopen {
+  animation: wtf;
+  animation-duration: 1.5s;
+}
+
+.Ropen {
+  animation: wtf2;
+  animation-duration: 1.5s;
+}
+
+@keyframes wtf {
+  0% {
+    font-size: 60px;
+    transform: perspective(100px) rotateY(50deg) translateX(-400%);
+  }
+  100% {
+    transform: perspective(400px) rotateY(25deg) translateX(0%);
+  }
+}
+
+@keyframes wtf2 {
+  0% {
+    font-size: 60px;
+    transform: perspective(100px) rotateY(-50deg) translateX(400%);
+  }
+  100% {
+    transform: perspective(400px) rotateY(-25deg) translateX(0%);
+  }
+}
+
+.Rclose {
+  animation: wtf2out 1.5s;
+}
+
+.Lclose {
+  animation: wtfout 1.5s;
+}
+
+@keyframes wtfout {
+  0% {
+    transform: perspective(400px) rotateY(25deg) translateX(0%);
+  }
+  100% {
+    font-size: 60px;
+    transform: perspective(100px) rotateY(50deg) translateX(-400%);
+  }
+}
+
+@keyframes wtf2out {
+  0% {
+    transform: perspective(400px) rotateY(-25deg) translateX(0%);
+  }
+  100% {
+    font-size: 60px;
+    transform: perspective(100px) rotateY(-50deg) translateX(400%);
+  }
+}
+
+
+#links-container-homepage {
+  background: none;
+  vertical-align: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 290px;
+}
+
+#links-container-homepage .link-imgs {
+  height: 60px;
+  width: auto;
+  display: flex;
+  padding: 5px;
+  transition: 0.3s;
+}
+
+#links-container-homepage .link-imgs:hover {
+  transform: scale(1.3);
+}
