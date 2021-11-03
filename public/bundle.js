@@ -517,8 +517,8 @@ class Game {
     this.notesHit = 0
     this.currentSong;
 
-    this.addTargetListeners = this.addTargetListeners.bind(this)
-    this.addTargetListeners()
+    // this.addTargetListeners = this.addTargetListeners.bind(this)
+    // this.addTargetListeners()
     this.animate = this.animate.bind(this)
     this.checkCollisionDown = this.checkCollisionDown.bind(this)
     this.checkCollisionUp = this.checkCollisionUp.bind(this)
@@ -620,10 +620,10 @@ class Game {
 
     // this.missedNotes collects missed notes and allows for them to
     // continue falling offscreen.
-    this.missedNotes.forEach( note => {
-      let pos = note.y - note.extensionLength - 30
-      if (pos !== this.dimensions.height) note.update(this.currentSong.dy);
-    })
+    // this.missedNotes.forEach( note => {
+    //   let pos = note.y - note.extensionLength - 30
+    //   if (pos !== this.dimensions.height) note.update(this.currentSong[dy]);
+    // })
 
     // this.visibleNotes is a 2D array containing a subarray of notes for each target
     // which allows for simultaneous inputs.
@@ -635,39 +635,39 @@ class Game {
       })
 
       // if the first note in each subArr is out of bounds then clear it
-      if (subArr[0] !== undefined) {
-        // Clear if a holding note is out of bounds
-        if (subArr[0].holdValue !== 0 && subArr[0].outOfBoundsTail(this.dimensions.height)) {
-          this.resetStreak();
-          subArr[0].color = 'gray';
-          this.missedNotes.push(subArr.shift());
+      // if (subArr[0] !== undefined) {
+      //   // Clear if a holding note is out of bounds
+      //   if (subArr[0].holdValue !== 0 && subArr[0].outOfBoundsTail(this.dimensions.height)) {
+      //     this.resetStreak();
+      //     subArr[0].color = 'gray';
+      //     this.missedNotes.push(subArr.shift());
           
-          if(i === 0) clearInterval(this.score1)
-          if(i === 1) clearInterval(this.score2)
-          if(i === 2) clearInterval(this.score3)
-          if(i === 3) clearInterval(this.score4)
-          if(i === 4) clearInterval(this.score5)
+      //     if(i === 0) clearInterval(this.score1)
+      //     if(i === 1) clearInterval(this.score2)
+      //     if(i === 2) clearInterval(this.score3)
+      //     if(i === 3) clearInterval(this.score4)
+      //     if(i === 4) clearInterval(this.score5)
 
-          // If a holding note was held for too long then clear the 
-          // successful hit glow indicator from the target
-          this.targets[i].successfulHit = false
-        }
-        // Clear if a single note is out of bounds
-        else if (subArr[0].holdValue === 0 && subArr[0].outOfBounds(this.dimensions.height)) {
-          this.resetStreak();
-          subArr[0].color = 'gray';
-          subArr.shift();
-        }
-        // If a holding note was not hit then gray it out
-        else if (
-          subArr[0].holdValue !== 0 && 
-          subArr[0].outOfBoundsHoldingNoteHead(this.dimensions.height) &&
-          !subArr[0].holdFlag) {
-            if (subArr[0].color !== 'black') subArr[0].color = 'gray';
-            this.resetStreak();
-            this.missedNotes.push(subArr.shift())
-        }
-      }
+      //     // If a holding note was held for too long then clear the 
+      //     // successful hit glow indicator from the target
+      //     this.targets[i].successfulHit = false
+      //   }
+      //   // Clear if a single note is out of bounds
+      //   else if (subArr[0].holdValue === 0 && subArr[0].outOfBounds(this.dimensions.height)) {
+      //     this.resetStreak();
+      //     subArr[0].color = 'gray';
+      //     subArr.shift();
+      //   }
+      //   // If a holding note was not hit then gray it out
+      //   else if (
+      //     subArr[0].holdValue !== 0 && 
+      //     subArr[0].outOfBoundsHoldingNoteHead(this.dimensions.height) &&
+      //     !subArr[0].holdFlag) {
+      //       if (subArr[0].color !== 'black') subArr[0].color = 'gray';
+      //       this.resetStreak();
+      //       this.missedNotes.push(subArr.shift())
+      //   }
+      // }
     })
 
     if (this.isPlaying) requestAnimationFrame(this.animate)
@@ -1156,7 +1156,7 @@ class Note {
 
   generateNote(y, x) {
     this.c.beginPath();
-    this.c.arc(x + 80, y + 80, 30, 0, Math.PI * 2, false);
+    this.c.arc(x + 700, y + 80, 30, 0, Math.PI * 2, false);
     this.c.fillStyle = this.color;
     this.c.fill();
     this.c.stroke();
@@ -1190,7 +1190,8 @@ class Note {
     } else {
       this.generateNote(this.x, this.y);
     }
-    this.y += dy;
+    this.y -= dy;
+    console.log(this.x, this.y)
     this.c.restore();
   }
 
