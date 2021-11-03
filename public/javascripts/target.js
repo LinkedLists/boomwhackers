@@ -46,19 +46,19 @@ export default class Target {
       this.context.shadowColor = "yellow";
     }
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 50, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 50, 0, Math.PI * 2, false);
     this.context.fillStyle = "black";
     this.context.fill();
     this.context.stroke();
 
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 45, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 45, 0, Math.PI * 2, false);
     this.context.fillStyle = COLORS[this.num];
     this.context.fill();
     this.context.stroke();
     
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 30, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 30, 0, Math.PI * 2, false);
     this.context.fillStyle = this.color;
     this.context.fill();
     this.context.stroke();
@@ -67,19 +67,19 @@ export default class Target {
 
   setTarget(){
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 50, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 50, 0, Math.PI * 2, false);
     this.context.fillStyle = "black";
     this.context.fill();
     this.context.stroke();
 
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 45, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 45, 0, Math.PI * 2, false);
     this.context.fillStyle = COLORS[this.num];
     this.context.fill();
     this.context.stroke();
     
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 30, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 30, 0, Math.PI * 2, false);
     this.context.fillStyle = this.color;
     this.context.fill();
     this.context.stroke();

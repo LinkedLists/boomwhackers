@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let startBtn = document.getElementById('start-btn')
   let selectBtn = document.getElementById('selection-back-btn')
   let audio = document.getElementById('audio')
-  audio.volume = 0.6
+  audio.volume = 0
   let currentPreviewIndex = 0
 
   // carousel wheel elements
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let gameView = document.getElementsByClassName('game-view')[0]
   let selectMenuVolume = document.getElementById('select-menu-volume')
 
-  selectMenuVolume.defaultValue = 70
+  selectMenuVolume.defaultValue = 0
   let currentVolume = selectMenuVolume.value / 100
   selectMenuVolume.addEventListener('change', (e) => {
     audio.volume = e.target.value / 100

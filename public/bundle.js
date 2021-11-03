@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let startBtn = document.getElementById('start-btn')
   let selectBtn = document.getElementById('selection-back-btn')
   let audio = document.getElementById('audio')
-  audio.volume = 0.6
+  audio.volume = 0
   let currentPreviewIndex = 0
 
   // carousel wheel elements
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let gameView = document.getElementsByClassName('game-view')[0]
   let selectMenuVolume = document.getElementById('select-menu-volume')
 
-  selectMenuVolume.defaultValue = 70
+  selectMenuVolume.defaultValue = 0
   let currentVolume = selectMenuVolume.value / 100
   selectMenuVolume.addEventListener('change', (e) => {
     audio.volume = e.target.value / 100
@@ -1154,15 +1154,15 @@ class Note {
     this.originalColor = this.color;
   }
 
-  generateNote(x, y) {
+  generateNote(y, x) {
     this.c.beginPath();
-    this.c.arc(x + 80, y, 30, 0, Math.PI * 2, false);
+    this.c.arc(x + 80, y + 80, 30, 0, Math.PI * 2, false);
     this.c.fillStyle = this.color;
     this.c.fill();
     this.c.stroke();
   }
 
-  generateHoldingNote(x, y) {
+  generateHoldingNote(y, x) {
     const beatMultiplier = 38.28
     this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
     if (this.holdFlag) {
@@ -1171,16 +1171,16 @@ class Note {
       this.c.shadowOffsetY = 3;
       this.c.shadowColor = "orange";
     }
-    this.c.beginPath();
-    this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
-    this.c.lineTo(x + 50, y)
-    this.c.moveTo(x + 110, y - this.extensionLength)
-    this.c.lineTo(x + 110, y)
-    this.c.arc(x + 80, y , 30, 0, -Math.PI, false);
-    this.c.fillStyle = this.color;
-    this.c.fill();
-    this.c.shadowBlur = 0;
-    this.c.stroke();
+    // this.c.beginPath();
+    // this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
+    // this.c.lineTo(x + 50, y)
+    // this.c.moveTo(x + 110, y - this.extensionLength)
+    // this.c.lineTo(x + 110, y)
+    // this.c.arc(x + 80, y , 30, 0, -Math.PI, false);
+    // this.c.fillStyle = this.color;
+    // this.c.fill();
+    // this.c.shadowBlur = 0;
+    // this.c.stroke();
   }
 
   update(dy) {
@@ -1273,19 +1273,19 @@ class Target {
       this.context.shadowColor = "yellow";
     }
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 50, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 50, 0, Math.PI * 2, false);
     this.context.fillStyle = "black";
     this.context.fill();
     this.context.stroke();
 
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 45, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 45, 0, Math.PI * 2, false);
     this.context.fillStyle = COLORS[this.num];
     this.context.fill();
     this.context.stroke();
     
     this.context.beginPath();
-    this.context.arc(this.pos, 678, 30, 0, Math.PI * 2, false);
+    this.context.arc(12, this.pos, 30, 0, Math.PI * 2, false);
     this.context.fillStyle = this.color;
     this.context.fill();
     this.context.stroke();
@@ -1294,19 +1294,19 @@ class Target {
 
   setTarget(){
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 50, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 50, 0, Math.PI * 2, false);
     this.context.fillStyle = "black";
     this.context.fill();
     this.context.stroke();
 
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 45, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 45, 0, Math.PI * 2, false);
     this.context.fillStyle = COLORS[this.num];
     this.context.fill();
     this.context.stroke();
     
     this.context.beginPath();
-    this.context.arc(this.pos, 690, 30, 0, Math.PI * 2, false);
+    this.context.arc(0, this.pos, 30, 0, Math.PI * 2, false);
     this.context.fillStyle = this.color;
     this.context.fill();
     this.context.stroke();

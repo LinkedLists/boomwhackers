@@ -28,15 +28,15 @@ export default class Note {
     this.originalColor = this.color;
   }
 
-  generateNote(x, y) {
+  generateNote(y, x) {
     this.c.beginPath();
-    this.c.arc(x + 80, y, 30, 0, Math.PI * 2, false);
+    this.c.arc(x + 80, y + 80, 30, 0, Math.PI * 2, false);
     this.c.fillStyle = this.color;
     this.c.fill();
     this.c.stroke();
   }
 
-  generateHoldingNote(x, y) {
+  generateHoldingNote(y, x) {
     const beatMultiplier = 38.28
     this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
     if (this.holdFlag) {
@@ -45,16 +45,16 @@ export default class Note {
       this.c.shadowOffsetY = 3;
       this.c.shadowColor = "orange";
     }
-    this.c.beginPath();
-    this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
-    this.c.lineTo(x + 50, y)
-    this.c.moveTo(x + 110, y - this.extensionLength)
-    this.c.lineTo(x + 110, y)
-    this.c.arc(x + 80, y , 30, 0, -Math.PI, false);
-    this.c.fillStyle = this.color;
-    this.c.fill();
-    this.c.shadowBlur = 0;
-    this.c.stroke();
+    // this.c.beginPath();
+    // this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
+    // this.c.lineTo(x + 50, y)
+    // this.c.moveTo(x + 110, y - this.extensionLength)
+    // this.c.lineTo(x + 110, y)
+    // this.c.arc(x + 80, y , 30, 0, -Math.PI, false);
+    // this.c.fillStyle = this.color;
+    // this.c.fill();
+    // this.c.shadowBlur = 0;
+    // this.c.stroke();
   }
 
   update(dy) {
