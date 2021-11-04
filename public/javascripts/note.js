@@ -37,14 +37,14 @@ export default class Note {
   }
 
   generateHoldingNote(y, x) {
-    const beatMultiplier = 38.28
-    this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
-    if (this.holdFlag) {
-      this.c.shadowBlur = 30;
-      this.c.shadowOffsetX = 3;
-      this.c.shadowOffsetY = 3;
-      this.c.shadowColor = "orange";
-    }
+    // const beatMultiplier = 38.28
+    // this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
+    // if (this.holdFlag) {
+    //   this.c.shadowBlur = 30;
+    //   this.c.shadowOffsetX = 3;
+    //   this.c.shadowOffsetY = 3;
+    //   this.c.shadowColor = "orange";
+    // }
     // this.c.beginPath();
     // this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
     // this.c.lineTo(x + 50, y)
@@ -65,7 +65,6 @@ export default class Note {
       this.generateNote(this.x, this.y);
     }
     this.y -= dy;
-    console.log(this.x, this.y)
     this.c.restore();
   }
 

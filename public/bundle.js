@@ -528,7 +528,8 @@ class Game {
     this.playSong = this.playSong.bind(this)
     this.noteGrabber = this.noteGrabber.bind(this)
     this.generateTargets = this.generateTargets.bind(this);
-    this.targets = this.generateTargets();
+    // this.targets = this.generateTargets();
+    this.targets = []
     this.streakBoard = this.streakBoard.bind(this)
     this.resetStreak = this.resetStreak.bind(this)
     this.clearGame = this.clearGame.bind(this)
@@ -620,10 +621,10 @@ class Game {
 
     // this.missedNotes collects missed notes and allows for them to
     // continue falling offscreen.
-    // this.missedNotes.forEach( note => {
-    //   let pos = note.y - note.extensionLength - 30
-    //   if (pos !== this.dimensions.height) note.update(this.currentSong[dy]);
-    // })
+    this.missedNotes.forEach( note => {
+      let pos = note.y - note.extensionLength - 30
+      if (pos !== this.dimensions.height) note.update(this.currentSong[dy]);
+    })
 
     // this.visibleNotes is a 2D array containing a subarray of notes for each target
     // which allows for simultaneous inputs.
@@ -635,39 +636,39 @@ class Game {
       })
 
       // if the first note in each subArr is out of bounds then clear it
-      // if (subArr[0] !== undefined) {
-      //   // Clear if a holding note is out of bounds
-      //   if (subArr[0].holdValue !== 0 && subArr[0].outOfBoundsTail(this.dimensions.height)) {
-      //     this.resetStreak();
-      //     subArr[0].color = 'gray';
-      //     this.missedNotes.push(subArr.shift());
+      if (subArr[0] !== undefined) {
+        // Clear if a holding note is out of bounds
+        if (subArr[0].holdValue !== 0 && subArr[0].outOfBoundsTail(this.dimensions.height)) {
+          this.resetStreak();
+          subArr[0].color = 'gray';
+          this.missedNotes.push(subArr.shift());
           
-      //     if(i === 0) clearInterval(this.score1)
-      //     if(i === 1) clearInterval(this.score2)
-      //     if(i === 2) clearInterval(this.score3)
-      //     if(i === 3) clearInterval(this.score4)
-      //     if(i === 4) clearInterval(this.score5)
+          if(i === 0) clearInterval(this.score1)
+          if(i === 1) clearInterval(this.score2)
+          if(i === 2) clearInterval(this.score3)
+          if(i === 3) clearInterval(this.score4)
+          if(i === 4) clearInterval(this.score5)
 
-      //     // If a holding note was held for too long then clear the 
-      //     // successful hit glow indicator from the target
-      //     this.targets[i].successfulHit = false
-      //   }
-      //   // Clear if a single note is out of bounds
-      //   else if (subArr[0].holdValue === 0 && subArr[0].outOfBounds(this.dimensions.height)) {
-      //     this.resetStreak();
-      //     subArr[0].color = 'gray';
-      //     subArr.shift();
-      //   }
-      //   // If a holding note was not hit then gray it out
-      //   else if (
-      //     subArr[0].holdValue !== 0 && 
-      //     subArr[0].outOfBoundsHoldingNoteHead(this.dimensions.height) &&
-      //     !subArr[0].holdFlag) {
-      //       if (subArr[0].color !== 'black') subArr[0].color = 'gray';
-      //       this.resetStreak();
-      //       this.missedNotes.push(subArr.shift())
-      //   }
-      // }
+          // If a holding note was held for too long then clear the 
+          // successful hit glow indicator from the target
+          this.targets[i].successfulHit = false
+        }
+        // Clear if a single note is out of bounds
+        else if (subArr[0].holdValue === 0 && subArr[0].outOfBounds(this.dimensions.height)) {
+          this.resetStreak();
+          subArr[0].color = 'gray';
+          subArr.shift();
+        }
+        // If a holding note was not hit then gray it out
+        else if (
+          subArr[0].holdValue !== 0 && 
+          subArr[0].outOfBoundsHoldingNoteHead(this.dimensions.height) &&
+          !subArr[0].holdFlag) {
+            if (subArr[0].color !== 'black') subArr[0].color = 'gray';
+            this.resetStreak();
+            this.missedNotes.push(subArr.shift())
+        }
+      }
     })
 
     if (this.isPlaying) requestAnimationFrame(this.animate)
@@ -1163,14 +1164,14 @@ class Note {
   }
 
   generateHoldingNote(y, x) {
-    const beatMultiplier = 38.28
-    this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
-    if (this.holdFlag) {
-      this.c.shadowBlur = 30;
-      this.c.shadowOffsetX = 3;
-      this.c.shadowOffsetY = 3;
-      this.c.shadowColor = "orange";
-    }
+    // const beatMultiplier = 38.28
+    // this.extensionLength = this.holdValue * beatMultiplier * 4 - 80
+    // if (this.holdFlag) {
+    //   this.c.shadowBlur = 30;
+    //   this.c.shadowOffsetX = 3;
+    //   this.c.shadowOffsetY = 3;
+    //   this.c.shadowColor = "orange";
+    // }
     // this.c.beginPath();
     // this.c.arc(x + 80, y - this.extensionLength, 30, 0, Math.PI, true);
     // this.c.lineTo(x + 50, y)
@@ -1191,7 +1192,6 @@ class Note {
       this.generateNote(this.x, this.y);
     }
     this.y -= dy;
-    console.log(this.x, this.y)
     this.c.restore();
   }
 
