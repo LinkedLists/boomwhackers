@@ -26,7 +26,7 @@ export default class Game {
     this.animate = this.animate.bind(this)
     this.checkCollisionDown = this.checkCollisionDown.bind(this)
     this.checkCollisionUp = this.checkCollisionUp.bind(this)
-    this.scoreboard = this.scoreboard.bind(this)
+    // this.scoreboard = this.scoreboard.bind(this)
     this.generateNotes = this.generateNotes.bind(this)
     this.firstGenerationNotes = this.firstGenerationNotes.bind(this)
     this.playSong = this.playSong.bind(this)
@@ -113,8 +113,8 @@ export default class Game {
   animate() {
     this.killJitter(this.c)
     this.c.clearRect(0, 0, canvas.width, canvas.height);
-    this.scoreboard();
-    this.streakBoard();
+    // this.scoreboard();
+    // this.streakBoard();
     
     this.targets.forEach( target => {
       this.c.save();

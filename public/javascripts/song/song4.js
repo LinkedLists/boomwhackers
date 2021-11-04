@@ -8,7 +8,7 @@ export const song4 = {
   notes: [].concat(intro, verse1, bridge, bridge2, outro),
   introDelay: 643,
   tempo: 100,
-  dy: 9,
+  dy: 11.3,
   totalNotes: 487
 
 }

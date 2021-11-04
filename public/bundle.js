@@ -522,7 +522,7 @@ class Game {
     this.animate = this.animate.bind(this)
     this.checkCollisionDown = this.checkCollisionDown.bind(this)
     this.checkCollisionUp = this.checkCollisionUp.bind(this)
-    this.scoreboard = this.scoreboard.bind(this)
+    // this.scoreboard = this.scoreboard.bind(this)
     this.generateNotes = this.generateNotes.bind(this)
     this.firstGenerationNotes = this.firstGenerationNotes.bind(this)
     this.playSong = this.playSong.bind(this)
@@ -609,8 +609,8 @@ class Game {
   animate() {
     this.killJitter(this.c)
     this.c.clearRect(0, 0, canvas.width, canvas.height);
-    this.scoreboard();
-    this.streakBoard();
+    // this.scoreboard();
+    // this.streakBoard();
     
     this.targets.forEach( target => {
       this.c.save();
@@ -1157,7 +1157,7 @@ class Note {
 
   generateNote(y, x) {
     this.c.beginPath();
-    this.c.arc(x + 700, y + 80, 30, 0, Math.PI * 2, false);
+    this.c.arc(x + 1200, y + 80, 30, 0, Math.PI * 2, false);
     this.c.fillStyle = this.color;
     this.c.fill();
     this.c.stroke();
@@ -3158,7 +3158,7 @@ const song4 = {
   notes: [].concat(__WEBPACK_IMPORTED_MODULE_0__jojo_intro__["a" /* intro */], __WEBPACK_IMPORTED_MODULE_2__jojo_verse1__["a" /* verse1 */], __WEBPACK_IMPORTED_MODULE_3__jojo_bridge__["a" /* bridge */], __WEBPACK_IMPORTED_MODULE_4__jojo_bridge2__["a" /* bridge2 */], __WEBPACK_IMPORTED_MODULE_1__jojo_outro__["a" /* outro */]),
   introDelay: 643,
   tempo: 100,
-  dy: 9,
+  dy: 11.3,
   totalNotes: 487
 
 }

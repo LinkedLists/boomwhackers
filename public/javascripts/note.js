@@ -30,7 +30,7 @@ export default class Note {
 
   generateNote(y, x) {
     this.c.beginPath();
-    this.c.arc(x + 700, y + 80, 30, 0, Math.PI * 2, false);
+    this.c.arc(x + 1200, y + 80, 30, 0, Math.PI * 2, false);
     this.c.fillStyle = this.color;
     this.c.fill();
     this.c.stroke();
