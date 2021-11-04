@@ -371,11 +371,11 @@ export default class Game {
       
   noteGrabber() {
     let noteParams = this.allNotes.pop();
-    let note = new Note(noteParams.x, noteParams.y, this.c, this.returnColor(noteParams.x), noteParams.hold)
+    let note = new Note(noteParams.x, noteParams.y, this.c, noteParams.color, noteParams.hold)
     this.visibleNotes[noteParams.pos].push(note);
     if (noteParams.chain) {
       let noteParams2 = this.allNotes.pop();
-      let note2 = new Note(noteParams2.x, noteParams2.y, this.c, this.returnColor(noteParams2.x), noteParams.hold)
+      let note2 = new Note(noteParams2.x, noteParams2.y, this.c, noteParams2.color, noteParams.hold)
       this.visibleNotes[noteParams2.pos].push(note2);
     }
   }

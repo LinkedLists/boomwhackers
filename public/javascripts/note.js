@@ -1,6 +1,6 @@
 
 export default class Note {
-  constructor(x, y, context, color, holdValue = 0) {
+  constructor(x, y, context, color = 'white', holdValue = 0) {
     this.x = x;
     this.y = y;
     this.c = context

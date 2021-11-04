@@ -867,11 +867,11 @@ class Game {
       
   noteGrabber() {
     let noteParams = this.allNotes.pop();
-    let note = new __WEBPACK_IMPORTED_MODULE_0__note__["a" /* default */](noteParams.x, noteParams.y, this.c, this.returnColor(noteParams.x), noteParams.hold)
+    let note = new __WEBPACK_IMPORTED_MODULE_0__note__["a" /* default */](noteParams.x, noteParams.y, this.c, noteParams.color, noteParams.hold)
     this.visibleNotes[noteParams.pos].push(note);
     if (noteParams.chain) {
       let noteParams2 = this.allNotes.pop();
-      let note2 = new __WEBPACK_IMPORTED_MODULE_0__note__["a" /* default */](noteParams2.x, noteParams2.y, this.c, this.returnColor(noteParams2.x), noteParams.hold)
+      let note2 = new __WEBPACK_IMPORTED_MODULE_0__note__["a" /* default */](noteParams2.x, noteParams2.y, this.c, noteParams2.color, noteParams.hold)
       this.visibleNotes[noteParams2.pos].push(note2);
     }
   }
@@ -1127,7 +1127,7 @@ class Game {
 "use strict";
 
 class Note {
-  constructor(x, y, context, color, holdValue = 0) {
+  constructor(x, y, context, color = 'white', holdValue = 0) {
     this.x = x;
     this.y = y;
     this.c = context
@@ -3178,14 +3178,22 @@ const CONSTANTS = {
   pos5: 510,
 }
 
+const COLORS = {
+  1: "green",
+  2: "red",
+  3: "yellow",
+  4: "blue",
+  5: "orange",
+}
+
 const intro = [
 
   // 1
-  { x: CONSTANTS.pos1, y: 0, pos: 0, tempo: 1, hold: 0, chain: true },
+  { x: CONSTANTS.pos1, y: 0, pos: 0, tempo: 1, hold: 0, chain: true},
   { x: CONSTANTS.pos2, y: 0, pos: 1, tempo: 1, hold: 0, chain: true },
   { x: CONSTANTS.pos1, y: 0, pos: 0, tempo: 1, hold: 0, chain: true },
   { x: CONSTANTS.pos2, y: 0, pos: 1, tempo: 1, hold: 0, chain: true },
-  { x: CONSTANTS.pos3, y: 0, pos: 2, tempo: 2, hold: 0, chain: false },
+  { x: CONSTANTS.pos3, y: 0, pos: 2, tempo: 2, hold: 0, chain: false, color: COLORS[1] },
   { x: CONSTANTS.pos2, y: 0, pos: 1, tempo: 2, hold: 0, chain: false },
 
   { tempo: 2, hold: 0, chain: false, rest: true },
