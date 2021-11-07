@@ -8,8 +8,8 @@ import { ending } from './be_kind/ending';
 
 export const song1 = {
   notes: [].concat(verse_1, bridge, chorus, verse_2, bridge, chorus, bridge_2, chorus_2, ending),
-  introDelay: 3604,
-  tempo: 319,
-  dy: 8,
+  introDelay: 3000,
+  tempo: 200,
+  dy: 4,
   totalNotes: 360
 }
