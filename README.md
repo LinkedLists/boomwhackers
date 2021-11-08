@@ -1,6 +1,5 @@
 # Installation
-Run `bundle install`
-After installation run both `npm run build` and `npm run start` on the terminal and run the app on `localhost:8000`
+Run `bundle install`. After installation run both `npm run build` and `npm run start` on the terminal and run the app on `localhost:8000`
 
 # Notes
 Game notes are located in `public/javascripts/song`
@@ -32,9 +31,19 @@ To add a rest note, add the following line of code. Rest notes can have their te
 
 If you need to have a note show up more quickly, add this line.
 ```
-  { kill: true },
+{ kill: true },
 ```
 
 In the main song file that bundles all the parts, `introDelay` delays the notes from showing up in milliseconds. `tempo` dictates the rate of which notes are generated in milliseconds. It does not determine how quickly the note moves across the screen. It is advised to set the tempo to the eight note BPM of the song. `dy` determines how fast the notes move across the screen.
+
+```
+export const song1 = {
+  notes: [].concat(verse_1, bridge, chorus, verse_2, bridge, chorus, bridge_2, chorus_2, ending),
+  introDelay: 3000,
+  tempo: 319,
+  dy: 8,
+  totalNotes: 360
+}
+```
 
 The window that the notes move in is currently set to `1300px`. This value is internal and is independent of actual browser window size. The animation is presumably set to 60 FPS. So a `dy` value of `8` means that the note will move `480px` per second and will take `2.7 seconds` for the note to finish its path.
